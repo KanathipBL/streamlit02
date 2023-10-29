@@ -8,16 +8,17 @@ import matplotlib.pyplot as plt
 st.markdown('สวัสดี! ***Streamlit***')
 st.write('จากโค้ด', '`st.markdown("สวัสดี!")`')
 st.write('เราจะลองทำ San Francisco dataset กัน')
-col1, col2, col3=st.columns
+col1, col2, col3=st.columns(3)
 with col1:
     st.write('Column 1')
 with col2:
     st.write('Column 2')
 with col3:
     st.write('Column 3')
-trees_df = pd.read_csv(trees.csv)
+trees_df = pd.read_csv('trees.csv')
 df_dbh_grouped= pd.DataFrame(trees_df.groupby(['dbh']).count()['tree_id'])
 df_dbh_grouped.columns=['tree_count']
+st.line_chart(df_dbh_grouped)
 # st.write(pd.DataFrame({
 #     'first column': [1, 2, 3, 4],
 #     'second column': [10, 20, 30, 40],
